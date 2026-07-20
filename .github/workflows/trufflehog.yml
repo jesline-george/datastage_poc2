@@ -15,3 +15,11 @@ jobs:
             --exclude-paths=/repo/.github/trufflehog-exclude.txt \
             --config=/repo/.github/trufflehog-custom.yaml \
             --results=unverified,verified
+            --json > trufflehog-report.json
+
+      - name: Upload report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trufflehog-report
+          path: trufflehog-report.json
