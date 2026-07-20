@@ -9,13 +9,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run TruffleHog (full filesystem scan)
-        run: |
-          docker run --rm -v "$PWD:/repo" ghcr.io/trufflesecurity/trufflehog:latest \
-            filesystem /repo \
-            --exclude-paths=/repo/.github/trufflehog-exclude.txt \
-            --config=/repo/.github/trufflehog-custom.yaml \
-            --results=unverified,verified
-            --json > trufflehog-report.json
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/trufflesecurity/trufflehog:latest filesystem /repo --exclude-paths=/repo/.github/trufflehog-exclude.txt --config=/repo/.github/trufflehog-custom.yaml --results=unverified,verified --json --fail > trufflehog-report.json
 
       - name: Upload report as artifact
         if: always()
