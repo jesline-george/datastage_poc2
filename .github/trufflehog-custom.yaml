@@ -4,8 +4,5 @@ detectors:
       - password
       - server
       - "\\V"
-      - DSSUBRECORD
-      - iisenc
     regex:
-      dsx_hardcoded_password: '(?i)F\d+\s+"([0-9A-Za-z@#$%^&*!._-]*[0-9@#$%^&*!._-][0-9A-Za-z@#$%^&*!._-]*)\\V'
-      dsx_dssubrecord_default: '(?is)BEGIN\s+DSSUBRECORD.*?Default\s+"([^"]+)"'
+      dsx_hardcoded_password: '(?i)F\d+\s+"([^"\\]*[0-9@#$%^&*!._-][^"\\]*)\\V([^"\\]+)\\V([^"\\]+)"'
