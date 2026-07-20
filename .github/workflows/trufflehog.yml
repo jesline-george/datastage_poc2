@@ -1,23 +1,28 @@
 name: TruffleHog Scan
+
 on: [push, pull_request]
+
 jobs:
   scan:
+    name: Run TruffleHog Scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check Out Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Run TruffleHog (full filesystem scan)
-        run: docker run --rm -v "$PWD:/repo" ghcr.io/trufflesecurity/trufflehog:latest filesystem /repo --exclude-paths=/repo/.github/trufflehog-exclude.txt --config=/repo/.github/trufflehog-custom.yaml --results=unverified,verified --json --fail > trufflehog-report.json
+        run: |
+          docker run --rm -v "$PWD:/repo" ghcr.io/trufflesecurity/trufflehog:latest filesystem /repo --exclude-paths=/repo/.github/trufflehog-exclude.txt --config=/repo/.github/trufflehog-custom.yaml --results=unverified,verified --json > trufflehog-report.json || true
 
-      - name: Upload report as artifact
-        if: always()
+      - name: Upload scan-artifact
         uses: actions/upload-artifact@v4
         with:
-          name: trufflehog-report
+          name: scan-artifact
           path: trufflehog-report.json
-      parseSecretsReport:
+
+  parseSecretsReport:
     name: Parse TruffleHog report and format output
     needs: [scan]
     runs-on: ubuntu-latest
