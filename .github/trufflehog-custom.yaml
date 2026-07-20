@@ -5,4 +5,4 @@ detectors:
       - server
       - "\\V"
     regex:
-      dsx_field_triplet: '(?i)F\d+\s+"([^"\\]+)\\V([^"\\]+)\\V([^"\\]+)"'
+      dsx_hardcoded_password: '(?i)F\d+\s+"([^"\\]*[0-9@#$%^&*!._-][^"\\]*)\\V([^"\\]+)\\V([^"\\]+)"'
