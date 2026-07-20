@@ -26,7 +26,7 @@ BEGIN DSJOB
       BEGIN DSSUBRECORD
          Name "PASSWORD"
          Prompt "PASSWORD"
-         Default "Vulnerable@123"
+         Default "NewVulnerable123"
          ParamType "0"
          ParamLength "0"
          ParamScale "0"
