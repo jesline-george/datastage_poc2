@@ -1,8 +1,0 @@
-detectors:
-  - name: DataStageConnectionCredentials
-    keywords:
-      - password
-      - server
-    regex:
-      password: '(?i)password\s*=\s*"?([^"\s;]+)"?'
-      server: '(?i)(?:server|host|hostname)\s*=\s*"?([^"\s;]+)"?'
