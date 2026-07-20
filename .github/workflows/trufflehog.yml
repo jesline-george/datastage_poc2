@@ -9,4 +9,4 @@ jobs:
           fetch-depth: 0
       - uses: trufflesecurity/trufflehog@main
         with:
-          extra_args: --only-verified
+          extra_args: --config=.github/trufflehog-custom.yaml --results=unverified,verified
