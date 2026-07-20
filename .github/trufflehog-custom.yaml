@@ -5,4 +5,4 @@ detectors:
       - server
       - "\\V"
     regex:
-      dsx_hardcoded_password: '(?i)F\d+\s+"([^"\\]*[0-9@#$%^&*!._-][^"\\]*)\\V([^"\\]+)\\V([^"\\]+)"'
+      dsx_hardcoded_password: '(?i)F\d+\s+"([A-Za-z][A-Za-z]*[0-9@#%^&*!]+[A-Za-z0-9@#%^&*!]*)\\V'
