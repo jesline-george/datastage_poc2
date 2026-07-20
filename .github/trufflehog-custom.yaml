@@ -3,6 +3,6 @@ detectors:
     keywords:
       - password
       - server
+      - "\\V"
     regex:
-      password: '(?i)password\s*=\s*"?([^"\s;]+)"?'
-      server: '(?i)(?:server|host|hostname)\s*=\s*"?([^"\s;]+)"?'
+      dsx_field_triplet: '(?i)F\d+\s+"([^"\\]+)\\V([^"\\]+)\\V([^"\\]+)"'
